@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://il7wwilx6qbv"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_fsyqr"]
+[ext_resource type="FontFile" uid="uid://b6xae2f2og813" path="res://font/Minecraft.ttf" id="1_xcnyk"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_fsyqr")
+
+[node name="score label" type="Label" parent="."]
+offset_left = 465.0
+offset_top = 295.0
+offset_right = 597.0
+offset_bottom = 318.0
+theme_override_fonts/font = ExtResource("1_xcnyk")
+
+[node name="GameTime" type="Timer" parent="."]
+autostart = true
+
+[node name="time label" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 55.0
+offset_right = 369.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_xcnyk")
+
+[connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]

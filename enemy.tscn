@@ -38,6 +38,7 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_iop70")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
+path_max_distance = 5000.0
+debug_path_custom_color = Color(0.419608, 1, 1, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

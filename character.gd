@@ -3,14 +3,17 @@ extends CharacterBody2D
 const default_speed = 80.0
 const dash_speed = 1000.0
 var movement_speed = default_speed
-
+ 
+#animation variables
 var direction=1
 var pre_dir = direction
 var action=3
 var pre_action=action
 
 var dash = false
+var points = 0
 
+#variables for other nodes
 @onready var dashtimer = $DashTimer
 @onready var cam = $Camera2D
 @onready var sprite = $AnimatedSprite2D
@@ -21,7 +24,7 @@ func _physics_process(_delta):
 	var mov = Vector2(x_mov, y_mov)
 	
 	
-	#if 2, The character is running. if 1, the character is walking
+	#if 2, The chcharacter is running. if 1, the character is walking
 	if y_mov > 0:
 		direction=3
 		action= 2 if dash else 1
@@ -59,7 +62,8 @@ func _physics_process(_delta):
 			cam.drag_horizontal_enabled = true
 			cam.drag_vertical_enabled = true
 			
-			
+	
+	
 	else:
 		movement_speed = 80.0
 	velocity = mov.normalized()*movement_speed
@@ -90,10 +94,16 @@ func get_action_as_str():
 			return "run"
 		3:
 			return "idle"
-
+			
+func change_score(num):
+	points += num
+	print(str("Score: ", points))
 
 func _on_dash_timer_timeout():
 	dash = false
 	movement_speed = default_speed
 	cam.drag_horizontal_enabled = false
 	cam.drag_vertical_enabled = false
+
+
+

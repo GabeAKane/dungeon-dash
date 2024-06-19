@@ -6,15 +6,15 @@
 frequency = 0.0075
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y7b4i"]
-width = 320
-height = 180
+width = 80
+height = 45
 seamless = true
 seamless_blend_skirt = 0.75
 noise = SubResource("FastNoiseLite_jl6w7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gvnk2"]
 shader = ExtResource("1_wc04o")
-shader_parameter/density = 0.25
+shader_parameter/density = 0.125
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_y7b4i")
 

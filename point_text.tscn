@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d211h54jcr4cw"]
+
+[ext_resource type="Script" path="res://PointText.gd" id="1_1bjst"]
+[ext_resource type="FontFile" uid="uid://b6xae2f2og813" path="res://font/Minecraft.ttf" id="2_p2bnb"]
+
+[node name="PointText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1bjst")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_p2bnb")
