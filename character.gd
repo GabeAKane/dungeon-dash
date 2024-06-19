@@ -3,7 +3,7 @@ extends CharacterBody2D
 const default_speed = 80.0
 const dash_speed = 1000.0
 var movement_speed = default_speed
- 
+var health = 3
 #animation variables
 var direction=1
 var pre_dir = direction

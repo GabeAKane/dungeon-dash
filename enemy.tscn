@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://i47j8x3aobt6"]
+[gd_scene load_steps=7 format=3 uid="uid://i47j8x3aobt6"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_pta1u"]
 [ext_resource type="Texture2D" uid="uid://dsvt1lhd7a8ea" path="res://enemy/Spider Sprite Sheet.png" id="2_t7r00"]
@@ -21,24 +21,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_iop70"]
 radius = 4.12311
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6g6lw"]
+radius = 5.0
+
 [node name="enemy" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pta1u")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.75
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_28fkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_iop70")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 5000.0
 debug_path_custom_color = Color(0.419608, 1, 1, 1)
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6g6lw")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

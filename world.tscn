@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b337bem3guc4b"]
+[gd_scene load_steps=10 format=3 uid="uid://b337bem3guc4b"]
 
 [ext_resource type="Texture2D" uid="uid://chniqsa8eak70" path="res://Tile set/Dungeon tileset.png" id="1_g67f2"]
 [ext_resource type="PackedScene" uid="uid://dlfgmle21tflt" path="res://fog/fog.tscn" id="1_haa2b"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://i47j8x3aobt6" path="res://enemy.tscn" id="4_xihlq"]
 [ext_resource type="PackedScene" uid="uid://dohjycds8b431" path="res://chest.tscn" id="5_cxopp"]
 [ext_resource type="PackedScene" uid="uid://il7wwilx6qbv" path="res://hud.tscn" id="6_j4p8q"]
+[ext_resource type="PackedScene" uid="uid://ditngpogkcjlm" path="res://spawner.tscn" id="7_e2pot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qye2l"]
 texture = ExtResource("1_g67f2")
@@ -572,3 +573,6 @@ position = Vector2(-488, 250)
 position = Vector2(-436, 605)
 
 [node name="HUD" parent="." instance=ExtResource("6_j4p8q")]
+
+[node name="spawner" parent="." instance=ExtResource("7_e2pot")]
+position = Vector2(-350, 280)
