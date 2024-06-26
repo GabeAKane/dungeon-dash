@@ -12,7 +12,7 @@ func _ready():
 	if randi() % 2:
 		mult = -1
 	
-	timer.wait_time = 3.0 + (randf()*5*mult) 
+	timer.wait_time = 7.0 + (randf()*5*mult) 
 	timer.start()
 
 

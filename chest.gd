@@ -22,3 +22,10 @@ func _on_area_2d_body_entered(body):
 		player.change_score(points)
 		isOpened = true
 		sprite.play("opening")
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	if isOpened:
+		var chest_spawner = get_tree().get_nodes_in_group("chest_spawner").pick_random()
+		chest_spawner.spawn()
+		queue_free()

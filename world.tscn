@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://chniqsa8eak70" path="res://Tile set/Dungeon tileset.png" id="1_g67f2"]
 [ext_resource type="PackedScene" uid="uid://dlfgmle21tflt" path="res://fog/fog.tscn" id="1_haa2b"]
 [ext_resource type="PackedScene" uid="uid://d3er5y44dk4pe" path="res://player/player.tscn" id="1_sa174"]
-[ext_resource type="PackedScene" uid="uid://i47j8x3aobt6" path="res://enemy.tscn" id="4_xihlq"]
 [ext_resource type="PackedScene" uid="uid://dohjycds8b431" path="res://chest.tscn" id="5_cxopp"]
 [ext_resource type="PackedScene" uid="uid://il7wwilx6qbv" path="res://hud.tscn" id="6_j4p8q"]
-[ext_resource type="PackedScene" uid="uid://ditngpogkcjlm" path="res://spawner.tscn" id="7_e2pot"]
+[ext_resource type="PackedScene" uid="uid://cjevanovxrjn4" path="res://chest_spawner.tscn" id="6_ptmrb"]
+[ext_resource type="Script" path="res://chest_spawner.gd" id="7_gl74p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qye2l"]
 texture = ExtResource("1_g67f2")
@@ -560,19 +560,11 @@ layer_1/tile_data = PackedInt32Array(1310679, 720896, 6, 1245143, 720896, 5, 144
 position = Vector2(-872, 613)
 scale = Vector2(0.868138, 0.884963)
 
-[node name="enemy" parent="." instance=ExtResource("4_xihlq")]
-position = Vector2(-753, 306)
-
-[node name="enemy2" parent="." instance=ExtResource("4_xihlq")]
-position = Vector2(-189, 357)
-
-[node name="enemy3" parent="." instance=ExtResource("4_xihlq")]
-position = Vector2(-488, 250)
-
 [node name="Node2D" parent="." instance=ExtResource("5_cxopp")]
 position = Vector2(-436, 605)
 
 [node name="HUD" parent="." instance=ExtResource("6_j4p8q")]
 
-[node name="spawner" parent="." instance=ExtResource("7_e2pot")]
-position = Vector2(-350, 280)
+[node name="chest_spawner" parent="." instance=ExtResource("6_ptmrb")]
+position = Vector2(-652, 30)
+script = ExtResource("7_gl74p")
