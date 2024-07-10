@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var scoreL = $"score label"
 @onready var timeL = $"time label"
 @onready var player = get_tree().get_first_node_in_group("player")
-
+@onready var healthL =$"health label"
 var minutes = 3
 var seconds = 0
 
@@ -18,6 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	scoreL.text = str("Score: ", player.points)
+	healthL.text = str("Health: ", player.health)
 
 
 func _on_game_time_timeout():
@@ -31,6 +32,10 @@ func _on_game_time_timeout():
 			seconds=59
 	else:
 		seconds-=1
-	print(str("time", minutes, " ", seconds))
+	#print(str("time: ", minutes, " ", seconds))
+	
+	if seconds <10:
+		timeL.text=str(minutes, ":0",seconds)
+		return
 	
 	timeL.text=str(minutes, ":",seconds)

@@ -3,7 +3,7 @@ extends CharacterBody2D
 const default_speed = 80.0
 const dash_speed = 1000.0
 var movement_speed = default_speed
-var health = 3
+var health = 5
 #animation variables
 var direction=1
 var pre_dir = direction
@@ -104,6 +104,10 @@ func _on_dash_timer_timeout():
 	movement_speed = default_speed
 	cam.drag_horizontal_enabled = false
 	cam.drag_vertical_enabled = false
-
-
+	
+func lower_health(num: int):
+	health-=num
+	print(str("Health: ", health))
+	if health <= 0:
+		get_tree().reload_current_scene()
 

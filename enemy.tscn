@@ -49,5 +49,8 @@ debug_path_custom_color = Color(0.419608, 1, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6g6lw")
 
+[node name="death" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

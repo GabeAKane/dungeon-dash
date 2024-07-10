@@ -5,6 +5,13 @@ const speed = 20
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var nav_agent = $NavigationAgent2D
 @onready var sprite = $AnimatedSprite2D
+@onready var death_timer = $death
+var dead = false
+
+func _ready():
+	death_timer.wait_time = 15.0 - (randf()*5)
+	death_timer.start()
+
 func _physics_process(_delta):
 	var dir = to_local(nav_agent.target_position).normalized()
 	#sprite.rotation = atan2(
@@ -23,5 +30,10 @@ func _on_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
-		player.health -= 1
+		player.lower_health(1)
 		print(str("Player health: ", player.health))
+
+
+func _on_death_timeout():
+	print("died")
+	queue_free()

@@ -8,11 +8,7 @@ const ENEMY = preload("res://enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var mult = 1
-	if randi() % 2:
-		mult = -1
-	
-	timer.wait_time = 3.0 + (randf()*5*mult) 
+	timer.wait_time = 3.0 + (randf()*5) 
 	timer.start()
 
 
@@ -25,6 +21,7 @@ func _on_timer_timeout():
 	var enemy = ENEMY.instantiate()
 	enemy.global_position = origin + (spawnArea*_random_inside_unit_circle())
 	get_parent().add_child(enemy)
+	timer.wait_time = 3.0 + (randf()*5)
 
 func _random_inside_unit_circle() -> Vector2:
 	var theta : float = randf() * 2 * PI
