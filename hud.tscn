@@ -30,4 +30,11 @@ offset_right = 107.0
 offset_bottom = 58.0
 theme_override_fonts/font = ExtResource("1_xcnyk")
 
+[node name="highscore label" type="Label" parent="."]
+offset_left = 52.0
+offset_top = 311.0
+offset_right = 136.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("1_xcnyk")
+
 [connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]

@@ -9,7 +9,6 @@ var should_delete = false
 @onready var nav_agent = $NavigationAgent2D
 @onready var sprite = $AnimatedSprite2D
 @onready var death_timer = $death
-var dead = false
 
 func _ready():
 	death_timer.wait_time = 15.0 - (randf()*5)
@@ -41,4 +40,4 @@ func _on_area_2d_body_entered(body):
 
 func _on_death_timeout():
 	print("died")
-	queue_free()
+	should_delete = true

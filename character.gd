@@ -13,10 +13,33 @@ var pre_action=action
 var dash = false
 var points = 0
 
+var previous_scores = []
+
 #variables for other nodes
 @onready var dashtimer = $DashTimer
 @onready var cam = $Camera2D
 @onready var sprite = $AnimatedSprite2D
+
+
+func _ready():
+	if not FileAccess.file_exists("user://game.save"):
+		return
+		
+	var save_game = FileAccess.open("user://game.save", FileAccess.READ)
+	var json_string = save_game.get_line()
+	var json = JSON.new()
+	
+	if not json.parse(json_string) == OK:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		return
+		
+	var data = json.get_data()
+	
+	previous_scores = data["scores"]
+	
+	
+	
+	
 
 func _physics_process(_delta):
 	var x_mov = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -109,5 +132,15 @@ func lower_health(num: int):
 	health-=num
 	print(str("Health: ", health))
 	if health <= 0:
+		save_score()
 		get_tree().reload_current_scene()
+		
+func save_score():
+	previous_scores.append(points)
+	var dict = {
+		"scores": previous_scores
+	}
+	var save_game = FileAccess.open("user://game.save", FileAccess.WRITE)
+	var JSON_str = JSON.stringify(dict)
+	save_game.store_line(JSON_str)
 
